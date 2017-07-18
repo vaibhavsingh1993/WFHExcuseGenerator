@@ -15,17 +15,20 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
  * @author vavasing
  */
 public class SMTPAuthenticatorTest {
+    private static final Logger LOGGER = LogManager.getLogger(SMTPAuthenticatorTest.class);
         public static void main(String[] args) {
         try {
             test();
         } catch (MessagingException ex) {
-            ex.printStackTrace();
+            LOGGER.error(ex.getMessage());
         }
 
     }
@@ -74,5 +77,4 @@ public class SMTPAuthenticatorTest {
         transport.sendMessage(msg, msg.getAllRecipients());
         transport.close();
     }
-
 }

@@ -9,15 +9,17 @@ import java.io.InputStream;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
  * @author vavasing
  */
 class SMTPAuthenticator extends Authenticator {
-
-    String user = null;
-    String pass = null;
+    private static final Logger LOGGER = LogManager.getLogger(SMTPAuthenticator.class);
+    private String user = null;
+    private String pass = null;
 
     public SMTPAuthenticator(String user, String pass) {
         this.user = user;
@@ -25,6 +27,7 @@ class SMTPAuthenticator extends Authenticator {
     }
 
     public PasswordAuthentication getPasswordAuthentication() {
+        LOGGER.debug("SMTPAuthenticator::Inside getPasswordAuthentication");
         return new PasswordAuthentication(this.user, this.pass);
     }
 }

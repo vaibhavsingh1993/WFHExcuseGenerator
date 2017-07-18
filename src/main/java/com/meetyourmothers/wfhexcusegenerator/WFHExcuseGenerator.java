@@ -14,6 +14,8 @@ import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.mail.*;
 import javax.mail.internet.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -21,6 +23,7 @@ import javax.mail.internet.*;
  */
 public class WFHExcuseGenerator {
 
+    private static final Logger LOGGER = LogManager.getLogger(WFHExcuseGenerator.class);
     public static void main(String[] args) {
 
         InputStream is = WFHExcuseGenerator.class.getClassLoader().getResourceAsStream("strings.properties");
@@ -28,7 +31,7 @@ public class WFHExcuseGenerator {
         try {
             props.load(is);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.error(ex.getMessage());
         }
 
         
@@ -77,7 +80,7 @@ public class WFHExcuseGenerator {
             System.out.println("message sent successfully...");
 
         } catch (MessagingException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 
