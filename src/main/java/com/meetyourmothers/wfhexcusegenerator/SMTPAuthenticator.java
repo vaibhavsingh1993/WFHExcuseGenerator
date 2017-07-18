@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
  *
  * @author vavasing
  */
-class SMTPAuthenticator extends Authenticator {
+public class SMTPAuthenticator extends Authenticator {
     private static final Logger LOGGER = LogManager.getLogger(SMTPAuthenticator.class);
     private String user = null;
     private String pass = null;
