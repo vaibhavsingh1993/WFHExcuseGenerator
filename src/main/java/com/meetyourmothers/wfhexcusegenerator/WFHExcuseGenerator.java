@@ -91,6 +91,7 @@ public class WFHExcuseGenerator {
         excuses.add("I have some personal work.");
         excuses.add("I have some personal emergency.");
         //excuses.add("I broke my leg.");
+        //excuses.add("I need to go to my cat's gynecologist.");
 
         return excuses.get(ThreadLocalRandom.current().nextInt(0, excuses.size() + 1));
     }
